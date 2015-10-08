@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'unkenmathe.exercises', # my own app. edit and display exercises.
+    'unkenmathe.website',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
