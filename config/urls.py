@@ -15,8 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^$', 'unkenmathe.core.views.index', name='home'),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^ueber-uns/$',
+    	TemplateView.as_view(template_name='ueber-uns.html'),
+    	name='ueber-uns'),
+    url(r'^changelog/$',
+    	TemplateView.as_view(template_name='changelog.html'),
+    	name='changelog'),
+	url(r'^admin/', include(admin.site.urls)),
 ]
