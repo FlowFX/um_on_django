@@ -1,2 +1,6 @@
-# custom style.css
+/* custom style.css */
+
+.container {
+	background-color: #ddd;
+}
 
