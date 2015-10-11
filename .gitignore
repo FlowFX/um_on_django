@@ -60,4 +60,4 @@ node_modules/
 unkenmathe/media/
 
 # Database migrations
-migrations
+*/*/migrations
