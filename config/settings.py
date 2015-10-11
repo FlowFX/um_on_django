@@ -25,7 +25,10 @@ SECRET_KEY = 'c6^byi)*q(=@%s05vl5_2ma#xjd8s981@6gr1i%uii@o-l7=jf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'unkenmathe.pythonanywhere.com',
+    'unkenmathe.de',
+]
 
 
 # Application definition
