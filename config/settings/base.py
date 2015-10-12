@@ -41,8 +41,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 
 
 ALLOWED_HOSTS = [
-    'unkenmathe.pythonanywhere.com',
-    'unkenmathe.de',
+    'www.unkenmathe.de',
 ]
 
 
