@@ -61,3 +61,6 @@ unkenmathe/media/
 
 # Database migrations
 */*/migrations
+
+# secret configs
+secrets.json

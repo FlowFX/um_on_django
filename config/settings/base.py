@@ -12,15 +12,32 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import json
+
+from django.core.exceptions import ImproperlyConfigured
+
+# JSON-based secrets module
+with open("secrets.json") as f:
+    secrets = json.loads(f.read())
+
+def get_secret(setting, secrets=secrets):
+    """Get the secret variable or return explicit exception."""
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {0} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'c6^byi)*q(=@%s05vl5_2ma#xjd8s981@6gr1i%uii@o-l7=jf'
+SECRET_KEY = get_secret("SECRET_KEY")
 
 
 ALLOWED_HOSTS = [
@@ -88,10 +105,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'unkenmathe',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
+        'NAME': get_secret("DATABASES_NAME"),
+        'USER': get_secret("DATABASES_USER"),
+        'PASSWORD': get_secret("DATABASES_PASSWORD"),
+        'HOST': get_secret("DATABASES_HOST"),
         'PORT': '',
     }
 }
